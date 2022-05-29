@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+    {% block content %}
+    <h2 class="alert alert-warning text-center">RECORDS</h2>
+    <div class="container pt-3">
+      {% for message in messages %}
+      <p class="alert alert-success">{{message}}</p>
+      {% endfor %}
+      <div class="row-8" style="height: 5px;">
+        <div class="col-md-8 offset-2">
+            <form method=POST action="{% url 'search-item' %}">
+              {% csrf_token %}
+                <div class="input-group">
+                    <input name="searched" type="text" placeholder="Search" class="form-control form-control-lg" />
+                    <div class="input-group-append">
+                        <button class="btn btn-dark btn-lg">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="mt-5">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Type of Session</th>
+                <th scope="col">Location Preference</th>
+                <th scope="col">Edit</th>
+                <th scope="col">View</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in customer_list %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ i.name }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.session }}</td>
+                <td>{{ i.location }}</td>
+                <td>
+                    <a href="{% url 'edit' i.id %}" class="btn btn-warning">Edit</a>
+                </td>
+                <td>
+                  <a href="{% url 'view' i.id %}" class="btn btn-primary">View</a>
+              </td>
+                <td>
+                    <a href="{% url 'delete' i.id %}" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    {% if customer_list.has_other_pages %}
+        <ul class="pagination">
+          {% if customer_list.has_previous %}
+            <li style="font-size: 20px"><a href="?page={{ customer_list.previous_page_number }}">«</a></li>
+          {% else %}
+            <li class="disabled" style="font-size: 20px"><span>«</span></li>
+    {% endif %}
+
+   {% for i in customer_list.paginator.page_range %}
+        {% if customer_list.number == i %}
+          <li class="active" style="font-size: 20px"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+          <li class="active" style="font-size: 20px"><span><span class="sr-only">(current)</span></span></li>
+        {% else %}
+      <li style="font-size: 20px"><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+   {% endfor %}
+
+   {% if customer_list.has_next %}
+      <li style="font-size: 20px"><a href="?page={{ customer_list.next_page_number }}">»</a></li>
+   {% else %}
+     <li class="disabled" style="font-size: 20px"><span>»</span></li>
+   {% endif %}
+    </ul>
+  {% endif %}
+  {% endblock %}
