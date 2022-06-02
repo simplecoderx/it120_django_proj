@@ -1,3 +1,4 @@
+{# Template for search results #}
 {% extends "base.html" %}
     {% block content %}
     <h2 class="alert alert-warning text-center">RESULTS</h2>
@@ -39,6 +40,7 @@
             </tbody>
           </table>
     </div>
+    {# Pagination #}
     {% if customer_list.has_other_pages %}
         <ul class="pagination">
           {% if customer_list.has_previous %}

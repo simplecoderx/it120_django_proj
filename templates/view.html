@@ -1,3 +1,4 @@
+{# Template for view specific record #}
 {% extends "base.html" %}
     {% block content %}
     <h2 class="alert alert-warning text-center"> {{view_customer.name}}</h2>
@@ -28,10 +29,9 @@
             <label>Location Preference</label>
               <input class="form-control" value="{{ view_customer.location}}" name="location"  placeholder="Enter Date" readonly>
           </div>
-
       </form>
       <div class="text-center pt-4">
         <button type="submit" class="btn btn-success"><a href="{% url 'index' %}" style="color: white; text-decoration: none;">Back</button>
     </div>
     
-      {% endblock %}
+     {% endblock %}
