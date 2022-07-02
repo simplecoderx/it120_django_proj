@@ -1,2 +1,2 @@
 # PLEASE READ (Dependencies)
-Sir, XAMPP MYSQL akoang gigamit na database but before anything, gagamit ko ug virtual environment, please check the venv folder nlng sir hehe. Ang giinstall ra nako nga dependency is mysqlclient (pip install mysqlclient). Please update me po if naay problem sako code or other errors. Thank Youuuu!!!
+Sir, XAMPP MYSQL akoang gigamit na database but before anything, gagamit ko ug virtual env, please check nlng the venv folder sir :>>. Ang giinstall ra nako nga dependency is mysqlclient (pip install mysqlclient). So far, akong gicheck ang code, downloaded and run the project again nigana man noon siya sir. Please update nlng me po if naay problem sako code or other errors when running sir. Thank Youuuu!!!
